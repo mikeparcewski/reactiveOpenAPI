@@ -3,9 +3,9 @@
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBW09wZW5BUEldIC0tPnxDb250cmFjdHwgQyhSZWFjdGl2ZSBBUEkpXG4gICAgQltCRERdIC0tPiB8U21va2UgVGVzdHN8IEMoUmVhY3RpdmUgQVBJKVxuICAgIEMgLS0-IHwgQmluZGVycyAmIEludGVjZXB0b3JzIHwgRHtTcHJpbmcgQ2xvdWQgU3RyZWFtcyB9XG4gICAgRCAtLT58UGVyc2lzdHwgRVtNb25nb0RCXVxuICAgIEQgLS0-fE1lc3NhZ2V8IEZbS2Fma2FdXG4gICAgRCAtLT58QXVkaXR8IEdbTG9nZ2luZ10iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBW09wZW5BUEldIC0tPnxDb250cmFjdHwgQyhSZWFjdGl2ZSBBUEkpXG4gICAgQltCRERdIC0tPiB8U21va2UgVGVzdHN8IEMoUmVhY3RpdmUgQVBJKVxuICAgIEMgLS0-IHwgQmluZGVycyAmIEludGVjZXB0b3JzIHwgRHtTcHJpbmcgQ2xvdWQgU3RyZWFtcyB9XG4gICAgRCAtLT58UGVyc2lzdHwgRVtNb25nb0RCXVxuICAgIEQgLS0-fE1lc3NhZ2V8IEZbS2Fma2FdXG4gICAgRCAtLT58QXVkaXR8IEdbTG9nZ2luZ10iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-A reference application that shows some real world hacks needed to make some of the cooler tech work in the real world.
-
-As far as the app goes, creates a simple Reactive CRUD application that shows how to use kafka and spring domain messaging.
+A reference application that shows some real world hacks and tricks needed to make some of the cooler tech work in  
+real world situations. As far as the app goes, it's a simple Reactive CRUD application developed using OpenAPI that 
+demonstrates how you might use kafka, spring domain messaging, BDD and a bunch of other useful stuff.
 
 ### The Technology
 
