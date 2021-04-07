@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+  "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+  "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+
+<suppressions>
+  <suppress checks="AbbreviationAsWordInName" files="VendorAPIDelegateImpl.java"/>
+  <suppress checks="AbbreviationAsWordInName" files="InvalidEntityHandler.java" lines="1-500"/>
+  <suppress checks="AbbreviationAsWordInName" files="NotFoundException.java" lines="1-500"/>
+</suppressions>

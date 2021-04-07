@@ -1,0 +1,38 @@
+server:
+  port: 8080
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+springdoc:
+  swagger-ui:
+    path: /docs
+spring:
+  application:
+    name: "reactor.SpringOpenAPICRUD"
+    processor:
+      emitWaitNanos: 10
+  data:
+    mongodb:
+      host: "localhost"
+      port: "27017"
+      database: "testdb"
+  cloud:
+    stream:
+      bindings:
+        auditor-in-0:
+          group: ${spring.application.name}
+          destination: "vendorChange"
+        producer-out-0:
+          destination: "vendorChange"
+      ## lots to configure to make production
+      ## ready - https://github.com/spring-cloud/spring-cloud-stream-binder-kafka
+      kafka:
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+    function:
+      definition: producer

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <!-- Justification: spotbugs doesn't always read this right -->
+  <Match>
+    <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+  </Match>
+  <!-- Justification: generated sources -->
+  <Match>
+    <Or>
+      <Class name="~.*RFC3339DateFormat$"/>
+      <Class name="~.*MapperImpl$"/>
+    </Or>
+  </Match>
+</FindBugsFilter>

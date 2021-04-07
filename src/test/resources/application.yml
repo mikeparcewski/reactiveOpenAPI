@@ -1,0 +1,54 @@
+server:
+  port: 8080
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+springdoc:
+  swagger-ui:
+    path: "/docs"
+spring:
+  application:
+    name: "rest.SpringOpenAPI"
+    processor:
+      emitWaitNanos: 10
+  sleuth:
+    mongodb:
+      enabled: false
+  data:
+    mongodb:
+      host: "localhost"
+      port: "27017"
+      database: "testdb"
+  cloud:
+    stream:
+      bindings:
+        producer-out-0:
+          destination: "vendorChange"
+      kafka:
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+bdd-for-all:
+  request:
+    server:
+      host: "http://localhost:8080"
+    userAgent: "ACN-BDD-CUCUMBER"
+    correlationIdName: "X-Correlation-ID"
+  cucumber:
+    plugin: "pretty, json:target/cucumber/tests.json, html:target/cucumber/report.html"
+    glue: "com.accenture.testing.bdd.api.steps"
+    features: "src/test/resources/features"
+    publish:
+      quiet: true
+test:
+  expected:
+    updates: 2
+    inserts: 5
+    deletes: 1
+    reads: 6
+lombok:
+  addLombokGeneratedAnnotation: true

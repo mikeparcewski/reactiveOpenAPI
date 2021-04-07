@@ -1,0 +1,11 @@
+{
+  "name": "{{faker::Company.name,en-US::name}}",
+  "description": "{{faker::Company.bs,en-US}}",
+  "contactDetails": [
+    {
+      "detailType": "Office",
+      "email": "example@example.com",
+      "phone": "{{faker::phoneNumber.cellPhone,en-US}}"
+    }
+  ]
+}
