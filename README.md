@@ -4,7 +4,7 @@
 
 ## OpenAPI/BDD/Spring Reactor/MongoDB/Kafka (and a little magic)
 
-A reference application that shows some real world hacks and tricks needed to make some of the cooler tech work in  
+A reference application that shows some real world hacks and tricks needed to make some of the cooler tech work in 
 real world situations. As far as the app goes, it's a simple Reactive CRUD application developed using OpenAPI that 
 demonstrates how you might use kafka, spring domain messaging, BDD and a bunch of other useful stuff.
 
