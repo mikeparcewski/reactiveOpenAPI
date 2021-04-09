@@ -31,6 +31,8 @@ Next up, we need to add the following to our [POM](/pom.xml)...
 </dependency>
 ```
 
+> IMPORTANT NOTE: You will need to either remove the "maven enforcer" plugin or fix the depedency collisions when adding these libs 
+
 This is followed by some edits to our application configuration.  First things first, you need to add in the  
 Azure configuration information...
 
@@ -47,6 +49,10 @@ Azure configuration information...
 
 If you followed most of the tutorial from Azure (link above) or just know Azure, you should be able to fill these 
 out fairly easily, if not RTFM.
+
+The one hard thing, if you haven't done it before, is getting your connection-string, but again Micrsoft has a page 
+for that https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-get-connection-string, everything else 
+is pretty obvious.
 
 > IMPORTANT NOTE: We already have spring.cloud configuration, so don't past the whole section in, just find the 
 > cloud configuration section that already exists in the application.yml and put the event hub info in
@@ -72,6 +78,7 @@ First things first, change your destination (if you didn't name it **vendorChang
 
 Wait, guess that's it.  All of the additional configuration is for consumers (which this app isn't using right now),  
 at least from a durable queue.
+
 
 #### Helpful Links
 
