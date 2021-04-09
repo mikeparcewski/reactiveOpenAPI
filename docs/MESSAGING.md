@@ -10,6 +10,9 @@ Spring Cloud Streams makes it easy to switch out the binder implementations with
 https://spring.io/projects/spring-cloud-stream for the different implementations.
 
 * [GCP Pub/Sub Learnings](GCP.md)
+* [Azure Event Hubs](AZURE.md)
+* [RabbitMQ](RABBITMQ.md)
+* 
 
 > NOTE: I've tried a few different binders out based on this codebase and didn't have any issues.  
 > You shouldn't need to change code to get anything working.
