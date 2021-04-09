@@ -1,6 +1,7 @@
 ### Still Need TODO!
 
-* Finish README
-* AWS Kinesis & Azure EventHubs Examples
+* AWS Kinesis documentation
+* Azure EventHubs documentation
+* RabbitMQ documentation  
 * Fix test coverage (generated code skewing it)
 * Create mvn archetype from project
