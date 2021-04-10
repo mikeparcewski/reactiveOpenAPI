@@ -224,25 +224,25 @@ You can't be a true reactive (or streaming) application if you block.  One of th
 systems in a "reactive" environment is that you have to deal with data sources.
 
 Datastores traditionally were designed to block (e.g. request -> wait <- respond), but between a multitude of vendors 
-(including our friends @ [Mongo](https://www.mongodb.com/)) and Spring, they've made this pretty easy to do.
+(including our friends @ [MongoDB](https://www.mongodb.com/)) and Spring, they've made this pretty easy to do and 
+since there are better writers than me documenting this stuff, and really "reactive repositories" are just
+[JPA](https://spring.io/projects/spring-data-jpa) on steroids.
 
-> Final word - Don't ever block a Mono or Flux, a lot of first timers try to work with these objects like they're 
-> normal Java POJO's.  They're not.  Do some homework before attempting at home!
+> Need more detail on reactive repositories?  Go visit https://www.baeldung.com/spring-data-mongodb-reactive.
 
-#### Spring Reactive Data Repositories
-
-There's a lot of documentation on reactive repostitories, one of the simplest is from [Baeldung](https://www.baeldung.com/spring-data-mongodb-reactive) 
-so I don't plan on writing about it, other than it is wicked simple (think [JPA](https://spring.io/projects/spring-data-jpa) just reactive).
-
-I will mention here, though, that we made our code specific to Mongo with two classes
+All that aside, I will mention here that we made our code specific to Mongo with two classes, something I didn't 
+want to do, but had to even though the code is pretty easy to tweak.  These classes are...
 
 * [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/VendorRepository.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/VendorRepository.java) - A simple spring repo
 * [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java) - Our change event listener
 
 Now, in a perfect world we would have used a [generic type](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/reactive/package-summary.html), which would 
 allow us to switch between DB's easily with just configuration changes.  But the world isn't perfect and we needed 
-to make this work.  To this end, we used the Vendor specific interfaces so we could capture the change (insert/update/delete/view) 
-events.  Check out the comments in RepositoryListener for more.
+to make this work.  To this end, we used the Vendor specific implementations so we could capture the 
+change (insert/update/delete/view) events.  Check out the comments in RepositoryListener for more on why.
+
+> Final word - Don't ever block a Mono or Flux, a lot of first timers try to work with these objects like they're
+> normal Java POJO's.  They're not.  Do some homework before attempting at home!
 
 #### Event Driven (Architecture)
 
