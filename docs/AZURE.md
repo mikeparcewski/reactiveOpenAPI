@@ -83,3 +83,9 @@ at least from a durable queue.
 #### Helpful Links
 
 * https://docs.microsoft.com/en-us/java/api/overview/azure/spring-cloud-stream-binder-eventhubs-readme?view=azure-java-stable
+
+## Running Locally
+
+Wonder why we don't have instructions?  It's because the folks at Azure haven't actually provided a solution (for any language)...  
+
+https://github.com/Azure/azure-sdk-for-net/issues/7172

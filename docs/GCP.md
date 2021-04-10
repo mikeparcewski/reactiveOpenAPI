@@ -1,4 +1,4 @@
-## GCP Pub/Sub
+## Google Cloud Pub/Sub
 
 Running this app using Pub/Sub is pretty straight forward when running in the cloud, but getting it running 
 locally can be a bit tricky since they don't provide an in-memory implementation.  
@@ -6,31 +6,24 @@ locally can be a bit tricky since they don't provide an in-memory implementation
 NOTE: Before you do anything [remove Kafka implementation](REMOVE_KAFKA.md)
 
 ### Configuration
+
 Once we've removed the Kafka implementation, we move to adding the GCP configuration.  This requires two things...
 
-First, we add the GCP configuration into our [src/test/resources/application.yml](src/test/resources/application.yml)
+* First, we add the GCP configuration into our [src/test/resources/application.yml](src/test/resources/application.yml)
+   ```yaml
+   spring:
+      cloud:
+       ...
+       gcp:
+         project-id: testing
+         pubsub:
+           credentials:
+             location: classpath:/gcp-creds.json
+   ```
+* Next, you'll need to create your GCP service account credentials - https://cloud.google.com/pubsub/docs/authentication
+* Once you have the credentials, you'll want to add them to your [src/main/resources](src/main/resources) folder. You can either change the name of the file to `gcp-creds.json` or update the `location` value you just added to application.yml.
 
-```yaml
-spring:
-   cloud:
-    ...
-    gcp:
-      project-id: testing
-      pubsub:
-        credentials:
-          location: classpath:/gcp-creds.json
-```
-
-Second part to this, is you'll need your GCP service account credentials.  This is what gives you permission to 
-work with Pub/Sub.  
-
-> Creating service account & credentials - https://cloud.google.com/pubsub/docs/authentication
-
-Once you have the credentials, you'll want to add them to your [src/main/resources](src/main/resources) folder.  
-You can either change the name of the file to `gcp-creds.json` or update the `location` value you just added 
-to application.yml.
-
-### GCP Pub/Sub (Local)
+### Running Locally
 For this you need to set up the emulator and make a small change to your [src/main/resources/application.yml](src/main/resources/application.yml), 
 let's start with the configuration change...
 
@@ -55,7 +48,7 @@ You're ready to party, just run.
 
 > NOTE: You still need the GCP credentials even with the emulator.  But for the emulator, it can all be fake.
 
-### GCP Pub/Sub (Cloud)
+### Running In the Cloud
 
 Really easy...
 
