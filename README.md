@@ -274,7 +274,12 @@ is more the implementation we're interested in here.
 * This flexibility does force us to write a custom implementation [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/exception/BinderExceptionHandler.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/exception/BinderExceptionHandler.java) since Spring has deprecated many of the convenience methods helpers like [EmitterProcessor](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/EmitterProcessor.html)
 
 > NOTE: There are a bunch of binder implementations, from RabbitMQ to Azure Event Hubs.  
-> Check out the [configuration page on messaging](docs/MESSAGING.md) for switching things ups.
+> Check out the [configuration page on messaging](docs/MESSAGING.md) for examples of connecting to these instead.
+
+Also, just to prove messages are going (a little tougher to see in something like Kinesis), we have a simple consumer 
+[src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/BinderConsumer.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/BinderConsumer.java) 
+check it out if you're curious.  Really simple to grasp (e.g. function name in application.yml matches function name in 
+class).
 
 #### Centralized Exception Handling
 
