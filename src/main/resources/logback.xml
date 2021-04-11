@@ -7,6 +7,22 @@
     </layout>
   </appender>
 
+  <appender name="SERVER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>logs/application.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>logs/application.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+      <maxHistory>2</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+    </encoder>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="SERVER"/>
+  </root>
+
   <root level="info">
     <appender-ref ref="STDOUT"/>
   </root>

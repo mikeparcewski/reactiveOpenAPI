@@ -25,6 +25,8 @@ spring:
       bindings:
         auditor-in-0:
           group: ${spring.application.name}
+        consumer-in-0:
+          group: ${spring.application.name}
           destination: "vendorChange"
         producer-out-0:
           destination: "vendorChange"
@@ -35,4 +37,5 @@ spring:
           brokers: localhost
           defaultBrokerPort: 9092
     function:
-      definition: producer
+      definition: producer;consumer
+
