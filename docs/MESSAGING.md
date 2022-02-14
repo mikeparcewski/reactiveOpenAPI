@@ -49,20 +49,10 @@ and change it to only be available for testing by adding `<scope>test</scope>`..
 ```
 
 In addition, you'll need to comment out the EmbeddedKafka instantiation that happens in
-[src/main/java/com/accenture/cloudnative/reference/reactoropenapi/AppConfiguration.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/AppConfiguration.java)
+[src/main/java/com/wickedagile/apis/reference/reactoropenapi/AppConfiguration.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/AppConfiguration.java)
 
 ```java
-  /**
-   * you'll want to comment this out if you don't want to use
-   * in memory kafka
-   * @return an embedded kafka broker instance
-   */
-  @Bean
-  EmbeddedKafkaBroker broker() {
-    return new EmbeddedKafkaBroker(1)
-        .kafkaPorts(9092)
-        .brokerListProperty("spring.kafka.bootstrap-servers"); // override application property
-  }
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 ```
 
 > If you ever want to move back to in memory, just remove that `<scope>test</scope>` line, uncomment the broker 

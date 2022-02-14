@@ -11,6 +11,8 @@ springdoc:
   swagger-ui:
     path: "/docs"
 spring:
+  profiles:
+    active: EmbedKafka, EmbedMongo
   application:
     name: "rest.SpringOpenAPI"
     processor:
@@ -32,6 +34,11 @@ spring:
         binder:
           brokers: localhost
           defaultBrokerPort: 9092
+  ## this only exists to support embedded mongo
+  ## you can remove if not using
+  mongodb:
+    embedded:
+      version: 3.2.3
 bdd-for-all:
   request:
     server:

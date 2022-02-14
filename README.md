@@ -6,7 +6,14 @@
 
 A reference application that shows some real world hacks and tricks needed to make some of the cooler tech work in 
 real world situations. As far as the app goes, it's a simple Reactive CRUD application developed using OpenAPI that 
-demonstrates how you might use kafka, spring domain messaging, BDD and a bunch of other useful stuff.
+demonstrates how you might use kafka 
+(
+or [Azure Event Hubs](docs/AZURE.md)
+or [RabbitMQ](docs/RABBITMQ.md) 
+or [GCP Pub/Sub](docs/GCP.md) 
+or [AWS Kinesis](doc/AWS.md)
+), 
+spring domain messaging, BDD and a bunch of other useful stuff.
 
 ### The Technology
 
@@ -40,8 +47,8 @@ other generic ways of capturing changes.  Mostly due to bugs between Lombok, Spr
 
 This means that if you want to change DB's, you'll need to change...
 
-* [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/PatientRepository.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/PatientRepository.java)
-* [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java)
+* [src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/PatientRepository.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/PatientRepository.java)
+* [src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/RepositoryListener.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/RepositoryListener.java)
 * and of course the configurations
 
 There's not a lot of code and what is there is pretty generic (and many other Spring Data implementations have). 
@@ -182,9 +189,9 @@ mvn compile
 You can see the code generated in **target/generated-sources/**.  This code will handle most of the plumbing, so you can focus on 
 the implementation.
 
-In this case, all you need to do is create a delegate implementation (see *com.accenture.cloudnative.reference.reactoropenapi.api.PatientApiDelegate* 
+In this case, all you need to do is create a delegate implementation (see *com.wickedagile.apis.reference.reactoropenapi.api.PatientApiDelegate* 
 in the generated sources directory).  The reference implementation can be found at 
-[src/main/java/com/accenture/cloudnative/reference/reactoropenapi/api/PatientAPIDelegateImpl.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/api/PatientDelegateImpl.java).
+[src/main/java/com/wickedagile/apis/reference/reactoropenapi/api/PatientAPIDelegateImpl.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/api/PatientDelegateImpl.java).
 
 For this project we chose to generate a Spring Boot Reactive project, but there a ton of options.  Check out more at...
 
@@ -209,7 +216,7 @@ After running tests, you can see the full report in [target/cucumber/cucumber-ht
 ##### Creative Component Testing
 
 In addition to executing the functional tests, we also "hook" into the eventing framework to see if we're generating 
-the number of events we'd expect from all these CRUD requests.  This is done via the [src/test/java/com/accenture/cloudnative/reference/reactoropenapi/event/EventsConfig.java](src/test/java/com/accenture/cloudnative/reference/reactoropenapi/event/EventsConfig.java) 
+the number of events we'd expect from all these CRUD requests.  This is done via the [src/test/java/com/wickedagile/apis/reference/reactoropenapi/event/EventsConfig.java](src/test/java/com/wickedagile/apis/reference/reactoropenapi/event/EventsConfig.java) 
 class.  We simply collect the events (and their types) and match them against an expected output.
 
 This allows us to write a lot less test code, but test important functionality as part of our functional tests since 
@@ -233,8 +240,8 @@ since there are better writers than me documenting this stuff, and really "react
 All that aside, I will mention here that we made our code specific to Mongo with two classes, something I didn't 
 want to do, but had to even though the code is pretty easy to tweak.  These classes are...
 
-* [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/VendorRepository.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/VendorRepository.java) - A simple spring repo
-* [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/repository/RepositoryListener.java) - Our change event listener
+* [src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/VendorRepository.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/VendorRepository.java) - A simple spring repo
+* [src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/RepositoryListener.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/repository/RepositoryListener.java) - Our change event listener
 
 Now, in a perfect world we would have used a [generic type](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/reactive/package-summary.html), which would 
 allow us to switch between DB's easily with just configuration changes.  But the world isn't perfect and we needed 
@@ -260,7 +267,7 @@ durable and if the publisher throws an exception the subscribers will never know
 > Be smart about using this option.  If you need truly durable change events, would recommend looking at 
 > the Change Feed options from your cloud providers - almost every provider has these now for every DB (Sql or not)
 
-An example of an internal processor is the simple [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/audit/Auditor.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/audit/Auditor.java) 
+An example of an internal processor is the simple [src/main/java/com/wickedagile/apis/reference/reactoropenapi/audit/Auditor.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/audit/Auditor.java) 
 which literally just logs the messages it receives, and although there are some better [auditing mechanisms](https://medium.com/swlh/data-auditing-with-spring-data-r2dbc-5d428fc94688) 
 available, the idea was to just showcase one potential use case for why you might want an internal event processor.
 
@@ -271,13 +278,13 @@ is more the implementation we're interested in here.
 
 * The kafka producer uses [spring cloud stream binders](https://spring.io/blog/2020/07/13/introducing-java-functions-for-spring-cloud-stream-applications-part-0) implementation
 * This option allows us to switch providers with just configuration changes (see [docs/MESSAGING.md] for more) 
-* This flexibility does force us to write a custom implementation [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/exception/BinderExceptionHandler.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/exception/BinderExceptionHandler.java) since Spring has deprecated many of the convenience methods helpers like [EmitterProcessor](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/EmitterProcessor.html)
+* This flexibility does force us to write a custom implementation [src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java) since Spring has deprecated many of the convenience methods helpers like [EmitterProcessor](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/EmitterProcessor.html)
 
 > NOTE: There are a bunch of binder implementations, from RabbitMQ to Azure Event Hubs.  
 > Check out the [configuration page on messaging](docs/MESSAGING.md) for examples of connecting to these instead.
 
 Also, just to prove messages are going (a little tougher to see in something like Kinesis), we have a simple consumer 
-[src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/BinderConsumer.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/event/BinderConsumer.java) 
+[src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java) 
 check it out if you're curious.  Really simple to grasp (e.g. function name in application.yml matches function name in 
 class).
 
@@ -287,7 +294,7 @@ Now the folks at [Baeldung might disagree](https://www.baeldung.com/exception-ha
 but when building enterprise software, centralizing anything is usually super helpful.   It's for this reason 
 we used the @ControllerAdvice option for error handling.
 
-You can check out [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/domain/exception/InvalidEntityHandler.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/domain/exception/InvalidEntityHandler.java) 
+You can check out [src/main/java/com/wickedagile/apis/reference/reactoropenapi/domain/exception/InvalidEntityHandler.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/domain/exception/InvalidEntityHandler.java) 
 for more detail, but it's really simple...
 
 ```java

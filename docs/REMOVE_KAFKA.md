@@ -27,7 +27,7 @@ and then the configuration from [src/main/resources/application.yml](src/main/re
           defaultBrokerPort: 9092
 ```
 
-and then the Java instantiation [src/main/java/com/accenture/cloudnative/reference/reactoropenapi/AppConfiguration.java](src/main/java/com/accenture/cloudnative/reference/reactoropenapi/AppConfiguration.java)...
+and then the Java instantiation [src/main/java/com/wickedagile/apis/reference/reactoropenapi/AppConfiguration.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/AppConfiguration.java)...
 
 ```java
   /**

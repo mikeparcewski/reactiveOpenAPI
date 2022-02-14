@@ -1,5 +1,5 @@
-import com.accenture.cloudnative.reference.reactoropenapi.OpenAPI2SpringBoot;
-import com.accenture.cloudnative.reference.reactoropenapi.event.EventsConfig;
+import com.wickedagile.apis.reference.reactoropenapi.OpenAPI2SpringBoot;
+import com.wickedagile.apis.reference.reactoropenapi.event.EventsConfig;
 import com.accenture.testing.bdd.BDDForAll;
 import java.util.Arrays;
 import java.util.List;
