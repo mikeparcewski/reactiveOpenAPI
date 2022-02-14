@@ -23,7 +23,7 @@ To name a few...
 
 #### A Little Extra Magic
 
-To simplify the experience, I took out the back pressured messaging piece.  But, if you want to get even fancier, check out [docs/MESSAGING.md](doc/MESSAGING.md) 
+To simplify the experience, I took out the back pressured messaging piece.  But, if you want to get even fancier, check out [docs/MESSAGING.md](docs/MESSAGING.md) 
 to see how you could add Kafka, Azure Event Hubs, RabbitMQ, GCP Pub/Sub or AWS Kinesis to the mix.
 
 ### Prerequisites
