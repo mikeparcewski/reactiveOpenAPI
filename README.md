@@ -2,18 +2,11 @@
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBW09wZW5BUEldIC0tPnxDb250cmFjdHwgQyhSZWFjdGl2ZSBBUEkpXG4gICAgQltCRERdIC0tPiB8U21va2UgVGVzdHN8IEMoUmVhY3RpdmUgQVBJKVxuICAgIEMgLS0-fFBlcnNpc3RlbmNlfCBFWyhNb25nb0RCKV1cbiAgICBFIC0tPnxQcm9kdWNlcnwgRyhbU3ByaW5nIERvbWFpbkV2ZW50XSlcbiAgICBHIC0tPnxQcm9kdWNlcnwgRltLYWZrYV1cbiAgICBHIC0tPnxTdWJzY3JpYmVyfCBIKFtTcHJpbmcgRG9tYWluRXZlbnRdKVxuICAgIEYgLS0-fFN1YnNjcmliZXJ8IEkoW0JpbmRlciBFdmVudF0pIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcbiAgICBBW09wZW5BUEldIC0tPnxDb250cmFjdHwgQyhSZWFjdGl2ZSBBUEkpXG4gICAgQltCRERdIC0tPiB8U21va2UgVGVzdHN8IEMoUmVhY3RpdmUgQVBJKVxuICAgIEMgLS0-fFBlcnNpc3RlbmNlfCBFWyhNb25nb0RCKV1cbiAgICBFIC0tPnxQcm9kdWNlcnwgRyhbU3ByaW5nIERvbWFpbkV2ZW50XSlcbiAgICBHIC0tPnxQcm9kdWNlcnwgRltLYWZrYV1cbiAgICBHIC0tPnxTdWJzY3JpYmVyfCBIKFtTcHJpbmcgRG9tYWluRXZlbnRdKVxuICAgIEYgLS0-fFN1YnNjcmliZXJ8IEkoW0JpbmRlciBFdmVudF0pIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
-## OpenAPI/BDD/Spring Reactor/MongoDB/Kafka (and a little magic)
+## OpenAPI/BDD/Spring Reactor/MongoDB/Spring Domain Events (and a little magic)
 
 A reference application that shows some real world hacks and tricks needed to make some of the cooler tech work in 
 real world situations. As far as the app goes, it's a simple Reactive CRUD application developed using OpenAPI that 
-demonstrates how you might use kafka 
-(
-or [Azure Event Hubs](docs/AZURE.md)
-or [RabbitMQ](docs/RABBITMQ.md) 
-or [GCP Pub/Sub](docs/GCP.md) 
-or [AWS Kinesis](doc/AWS.md)
-), 
-spring domain messaging, BDD and a bunch of other useful stuff.
+demonstrates how you might use NoSQL DB (MongoDB), spring domain messaging, BDD and a bunch of other useful stuff.
 
 ### The Technology
 
@@ -23,11 +16,15 @@ To name a few...
 * [OpenAPI Tools](https://github.com/openapitools/openapi-generator) - Bringing our API-First approach to life
 * [BDD For All](https://github.com/Accenture/bdd-for-all/) - Enabling our Test-First (or TDD) approach
 * [MongoDB](https://www.mongodb.com/) - How we're persisting data
-* [Kafka](https://kafka.apache.org/) - For durable messaging outside our application
 * [Spring Domain Events](https://www.baeldung.com/spring-data-ddd) - Fun way of handling domain events internally or externally
 * [Lombok](https://projectlombok.org/) - Write less code
 * [Mapstruct](https://mapstruct.org/) - Fast way to map our objects
 * [JUnit](https://junit.org/junit5/) - For all those other things we need to test
+
+#### A Little Extra Magic
+
+To simplify the experience, I took out the back pressured messaging piece.  But, if you want to get even fancier, check out [docs/MESSAGING.md](doc/MESSAGING.md) 
+to see how you could add Kafka, Azure Event Hubs, RabbitMQ, GCP Pub/Sub or AWS Kinesis to the mix.
 
 ### Prerequisites
 
