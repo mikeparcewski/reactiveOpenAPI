@@ -2,6 +2,7 @@
 
 There are a couple ways to run with Mongo...
 
+* **Local** - You've installed MongoDB locally
 * **Atlas** - Which works across all cloud providers and has a free tier - https://docs.atlas.mongodb.com/getting-started/#deploy-a-free-tier-cluster
 * **Self Managed Cloud** - Deploy as a self managed option
   * https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction or https://docs.microsoft.com/en-us/hybrid/app-solutions/solution-deployment-guide-mongodb-ha
@@ -9,7 +10,25 @@ There are a couple ways to run with Mongo...
   * https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html
 * [Docker](#Docker)
 
+#### Local
+
+Really nothing to do, except maybe change the port/db name/password in the [application.yml](../src/main/resources/application.yml) 
+just checkout the spring.data.mongodb section
+
+```yaml
+  data:
+    mongodb:
+      host: "localhost"
+      port: 27017
+      database: "reactiveOpenAPIMongo"
+      ### if using password, uncomment and change below
+      # password: mikep
+```
+
+Otherwise, this is pretty straightforward.
+
 #### Cloud Variation
+
 If you're changing to use a cloud version of the DB, in addition to adding `<scope>test</scope>` from your POM file, 
 we also need to change the location of our database in [src/main/resources/application.yaml](src/main/resources/application.yaml)
 
