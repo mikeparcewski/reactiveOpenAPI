@@ -129,20 +129,6 @@
       <optional>true</optional>
     </dependency>
 
-    <!-- messaging -->
-
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-stream-binder-kafka</artifactId>
-      <version>${kafka-binder.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-stream-binder-kinesis</artifactId>
-      <version>${kinesis-binder.version}</version>
-    </dependency>
-
     <!-- testing -->
 
     <dependency>
@@ -319,7 +305,7 @@
             <id>enforce</id>
             <configuration>
               <rules>
-                <!-- dependencyConvergence/ -->
+                <dependencyConvergence/>
                 <requireJavaVersion>
                   <version>11</version>
                 </requireJavaVersion>

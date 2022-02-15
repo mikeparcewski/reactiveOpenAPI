@@ -16,6 +16,14 @@ which will force the application to find the application-kafka.yml file in the s
 
 So...
 
+* Begin by adding the following dependency to your pom.xml file
+  ```xml
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-stream-binder-kafka</artifactId>
+      <version>${kafka-binder.version}</version>
+    </dependency>
+  ```
 * Go into [application.yml](../src/main/resources/application.yml)
   * Find the section below...
     ```yaml

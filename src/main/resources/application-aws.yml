@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        auditor-in-0:
+          group: ${spring.application.name}
+        consumer-in-0:
+          group: ${spring.application.name}
+          destination: "vendorChange"
+        producer-out-0:
+          destination: "vendorChange"
+    aws:
+      credentials:
+        accessKey: <ACCESS_KEY>
+        secretKey: <SECRET_KEY>
+      region:
+        static: us-east-1
+      stack:
+        auto: false
+    autoconfigure:
+      exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration

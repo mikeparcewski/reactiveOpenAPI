@@ -11,6 +11,14 @@ are pretty much the same...
 
 So...
 
+* First add the following to your pom.xml file...
+  ```xml
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-stream-binder-kinesis</artifactId>
+      <version>${kinesis-binder.version}</version>
+    </dependency>
+  ```
 * Go into [application.yml](../src/main/resources/application.yml)
     * Find the section below...
       ```yaml
@@ -26,22 +34,20 @@ So...
         ## Potential options include kafka,
         active: aws
     ```
-  * Next up, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...
-      ```yaml
-      spring:
-        autoconfigure:
-          exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
-      cloud:
-        aws:
-          credentials:
-            accessKey: <ACCESS_KEY>
-            secretKey: <SECRET_KEY>
-          region:
-            static: us-east-1
-          stack:
-            auto: false
-      ```
-    Replace your credentials and region (if needed) and have some fun!
+* Next up, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...
+    ```yaml
+    aws:
+      credentials:
+        accessKey: <ACCESS_KEY>
+        secretKey: <SECRET_KEY>
+      region:
+        static: us-east-1
+      stack:
+        auto: false
+    autoconfigure:
+      exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+    ```
+  Replace your credentials and region (if needed) and have some fun!
 
 You'll notice in addition, I added the autoconfiguration exclude line, if you use AWS regularly and have a profile 
 on your machine, you won't need this, but if you don't (or have no clue what I'm talking about) this will save you an error 
