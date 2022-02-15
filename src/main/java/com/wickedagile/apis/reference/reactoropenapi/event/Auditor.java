@@ -1,6 +1,5 @@
 package com.wickedagile.apis.reference.reactoropenapi.event;
 
-import com.wickedagile.apis.reference.reactoropenapi.event.DomainEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;

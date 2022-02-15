@@ -9,12 +9,10 @@ management:
         include: "*"
 springdoc:
   swagger-ui:
-    path: "/docs"
+    path: /docs
 spring:
-  profiles:
-    active: EmbedKafka, EmbedMongo
   application:
-    name: "rest.SpringOpenAPI"
+    name: "wickedagile.reactiveOpenAPIMongo"
     processor:
       emitWaitNanos: 10
   sleuth:
@@ -23,22 +21,24 @@ spring:
   data:
     mongodb:
       host: "localhost"
-      port: "27017"
-      database: "testdb"
-  cloud:
-    stream:
-      bindings:
-        producer-out-0:
-          destination: "vendorChange"
-      kafka:
-        binder:
-          brokers: localhost
-          defaultBrokerPort: 9092
-  ## this only exists to support embedded mongo
-  ## you can remove if not using
+      port: 27017
+      database: "reactiveOpenAPIMongo"
   mongodb:
     embedded:
       version: 3.2.3
+logging:
+  file:
+    name: "logs/application.log"
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  logback:
+    rollingpolicy:
+      file-name-pattern: "logs/application.%d{yyyy-MM-dd-HH-mm}.log"
+#      max-file-size: 10M
+      max-history: 2
+  level:
+    root: INFO
 bdd-for-all:
   request:
     server:

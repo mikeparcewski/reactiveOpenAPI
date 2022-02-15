@@ -1,5 +1,7 @@
 ## Messaging
 
+[![](https://mermaid.ink/img/pako:eNp90cFqwzAMBuBXMT4l0L5ADoMmTrvCxkqzW5KDa6upWSMHWy6Mpu8-t2lhbGw6CfTpP0hnrqwGnvHOyeHAXrYNsliL-m0AXGzWLZvPn8bCIjmpaGRFsoXYmBOwOE0nnde5EDfJxqq3H8DewZP_Qxe3yA04bzwBKhhZWSevFjsr8rSdUDkhZ3VQ4Ea2SupqcAY7JmwvDZYnQGrviasfeFnnBjW49vu4CjuvnNldwfN_actffJ08AlM-4z24uKPjzc7XhYbTAXpoeBZbDXsZjtTwBi-RhkFLglIbso5ne3n0MOMykK0-UfGMXIAHEkbGF_R3dfkClOiFHg)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp90cFqwzAMBuBXMT4l0L5ADoMmTrvCxkqzW5KDa6upWSMHWy6Mpu8-t2lhbGw6CfTpP0hnrqwGnvHOyeHAXrYNsliL-m0AXGzWLZvPn8bCIjmpaGRFsoXYmBOwOE0nnde5EDfJxqq3H8DewZP_Qxe3yA04bzwBKhhZWSevFjsr8rSdUDkhZ3VQ4Ea2SupqcAY7JmwvDZYnQGrviasfeFnnBjW49vu4CjuvnNldwfN_actffJ08AlM-4z24uKPjzc7XhYbTAXpoeBZbDXsZjtTwBi-RhkFLglIbso5ne3n0MOMykK0-UfGMXIAHEkbGF_R3dfkClOiFHg)
+
 Unlike Mongo, you can easily switch out your underlying messaging platform without a code change.  This is done 
 just by changing the binders registered in [pom.xml](pom.xml) and settings in 
 [src/main/resources/application.yml](src/main/resources/application.yml).
