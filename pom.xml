@@ -21,6 +21,7 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <jackson-databind-nullable.version>0.2.2</jackson-databind-nullable.version>
         <kafka-binder.version>3.2.1</kafka-binder.version>
+        <kinesis-binder.version>2.2.0</kinesis-binder.version>
         <openapi-tool.version>5.4.0</openapi-tool.version>
         <checkstyle.version>3.1.2</checkstyle.version>
         <spotbugs.version>4.5.3.0</spotbugs.version>
@@ -136,6 +137,12 @@
       <version>${kafka-binder.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-stream-binder-kinesis</artifactId>
+      <version>${kinesis-binder.version}</version>
+    </dependency>
+
     <!-- testing -->
 
     <dependency>
@@ -229,7 +236,7 @@
             <version>4.8.138</version>
           </dependency>
 
-       </dependencies>
+        </dependencies>
   </dependencyManagement>
 
   <build>
@@ -312,7 +319,10 @@
             <id>enforce</id>
             <configuration>
               <rules>
-                <dependencyConvergence/>
+                <!-- dependencyConvergence/ -->
+                <requireJavaVersion>
+                  <version>11</version>
+                </requireJavaVersion>
               </rules>
             </configuration>
             <goals>
