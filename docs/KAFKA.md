@@ -32,13 +32,13 @@ So...
         ## Potential options include kafka,
         active:     
     ```
-* The section will be blank (active that is), just change to include kafka...
-    ```yaml
-      spring:
-        profiles:
-        ## Potential options include kafka,
-        active: kafka
-    ```
+  * The section will be blank (active that is), just change to include kafka...
+      ```yaml
+        spring:
+          profiles:
+          ## Potential options include kafka,
+          active: kafka
+      ```
 
 > Alternative (better) is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=kafka**)
 

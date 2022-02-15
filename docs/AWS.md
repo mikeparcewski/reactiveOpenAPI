@@ -27,13 +27,13 @@ So...
           ## Potential options include kafka,
           active:     
       ```
-* The section will be blank (active that is), just change to include aws...
-    ```yaml
-      spring:
-        profiles:
-        ## Potential options include kafka,
-        active: aws
-    ```
+    * The section will be blank (active that is), just change to include aws...
+        ```yaml
+          spring:
+            profiles:
+            ## Potential options include kafka,
+            active: aws
+        ```
 * Next up, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...
     ```yaml
     aws:
@@ -48,6 +48,8 @@ So...
       exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
     ```
   Replace your credentials and region (if needed) and have some fun!
+
+> Alternative (better) is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=aws**)
 
 You'll notice in addition, I added the autoconfiguration exclude line, if you use AWS regularly and have a profile 
 on your machine, you won't need this, but if you don't (or have no clue what I'm talking about) this will save you an error 
