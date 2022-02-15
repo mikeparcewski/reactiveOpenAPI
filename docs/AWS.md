@@ -3,7 +3,7 @@
 Probably seeing a common theme here, outside of the setup, the changes needed for each of the implmentations 
 are pretty much the same, starting with...
 
-NOTE: Before you do anything [remove Kafka implementation](REMOVE_KAFKA.md)
+NOTE: Before you do anything [remove Kafka implementation](KAFKA.md)
 
 ### Configuration
 

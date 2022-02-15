@@ -92,6 +92,16 @@ means interopability you might have found in older version gets a bit tricky.
 Out of the box, we're using [Spring Domain Events](https://www.baeldung.com/spring-data-ddd) 
 which aren't durable, but don't require configuring something else.
 
+These local events are easy to use and can be published/consumed without explicitly linking our code (e.g. method chaining).  Now these events ARE NOT
+durable and if the publisher throws an exception the subscribers will never know :( which means...
+
+> Be smart about using this option.  If you need truly durable change events, would recommend looking at
+> the Change Feed options from your cloud providers - almost every provider has these now for every DB (Sql or not)
+
+The simple example of an internal processor is [src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/Auditor.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/Auditor.java)
+which literally just logs the messages it receives, and although there are some better [auditing mechanisms](https://medium.com/swlh/data-auditing-with-spring-data-r2dbc-5d428fc94688)
+available, the idea was to just showcase one potential use case for why you might want an internal event processor.
+
 If you're interested in expanding to Kafka (or Azure Event Hubs, RabbitMQ, GCP Pub/Sub or AWS Kinesis) 
 please check out [docs/MESSAGING.md](docs/MESSAGING.md).  The implementation is based on Spring Cloud 
 Streams Binder solution, which makes it easy to switch providers without changing code (just config).
@@ -229,6 +239,10 @@ we're still trying to figure out how BDD and Event Driven Architectures can plac
 Recommend reviewing the user guide - https://github.com/Accenture/bdd-for-all/blob/develop/docs/USERGUIDE.md - as BDD For All can do a lot 
 and to put in perspective, the better your BDD tests are, the better your code coverage will be, which means less Unit tests (Yay!).
 
+## Some More Background
+
+There's a lot happening in here, so want to make sure I cover some more features...
+
 #### Reactive Data Repositories
 
 You can't be a true reactive (or streaming) application if you block.  One of the hardest part of designing transactional 
@@ -254,43 +268,6 @@ change (insert/update/delete/view) events.  Check out the comments in Repository
 
 > Final word - Don't ever block a Mono or Flux, a lot of first timers try to work with these objects like they're
 > normal Java POJO's.  They're not.  Do some homework before attempting at home!
-
-#### Event Driven (Architecture)
-
-Ok, we're getting to the end of the README and I'm getting tired of typing.  So I'm going to bullet points for this one.
-
-* What is it? https://en.wikipedia.org/wiki/Event-driven_architecture
-* Why do it? https://siliconangle.com/2018/12/27/want-software-first-agility-get-event-driven-architecture-says-accenture-reinvent/
-
-##### Internal Events
-
-For internal events we use Springs DomainEvents mechanism, this works almost like a local event bus and allows us 
-to publish events and receive them without explicitly linking our code (e.g. method chaining).  Now these events ARE NOT 
-durable and if the publisher throws an exception the subscribers will never know :( which means...
-
-> Be smart about using this option.  If you need truly durable change events, would recommend looking at 
-> the Change Feed options from your cloud providers - almost every provider has these now for every DB (Sql or not)
-
-An example of an internal processor is the simple [src/main/java/com/wickedagile/apis/reference/reactoropenapi/audit/Auditor.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/audit/Auditor.java) 
-which literally just logs the messages it receives, and although there are some better [auditing mechanisms](https://medium.com/swlh/data-auditing-with-spring-data-r2dbc-5d428fc94688) 
-available, the idea was to just showcase one potential use case for why you might want an internal event processor.
-
-##### External Events
-
-Yes, we're using Kafka in this example (so much easier for build/test, not necessarily for production), but the point 
-is more the implementation we're interested in here.
-
-* The kafka producer uses [spring cloud stream binders](https://spring.io/blog/2020/07/13/introducing-java-functions-for-spring-cloud-stream-applications-part-0) implementation
-* This option allows us to switch providers with just configuration changes (see [docs/MESSAGING.md] for more) 
-* This flexibility does force us to write a custom implementation [src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java) since Spring has deprecated many of the convenience methods helpers like [EmitterProcessor](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/EmitterProcessor.html)
-
-> NOTE: There are a bunch of binder implementations, from RabbitMQ to Azure Event Hubs.  
-> Check out the [configuration page on messaging](docs/MESSAGING.md) for examples of connecting to these instead.
-
-Also, just to prove messages are going (a little tougher to see in something like Kinesis), we have a simple consumer 
-[src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java) 
-check it out if you're curious.  Really simple to grasp (e.g. function name in application.yml matches function name in 
-class).
 
 #### Centralized Exception Handling
 

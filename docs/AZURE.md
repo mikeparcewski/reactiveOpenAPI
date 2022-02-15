@@ -3,7 +3,7 @@
 The binder implementation with EventHubs is fairly straight forward to use, but like GCP, the Azure folks
 don't really have an easy way to run this locally.
 
-NOTE: Before you do anything [remove Kafka implementation](REMOVE_KAFKA.md)
+NOTE: Before you do anything [remove Kafka implementation](KAFKA.md)
 
 ### Configuration
 Once we've removed the Kafka implementation, we move to adding the Azure configuration.  This requires three things...

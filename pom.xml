@@ -212,12 +212,6 @@
           </dependency>
 
           <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>2.6.1</version>
-          </dependency>
-
-          <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-reflect</artifactId>
             <version>2.13.8</version>

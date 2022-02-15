@@ -11,6 +11,9 @@ springdoc:
   swagger-ui:
     path: /docs
 spring:
+  profiles:
+    ## Potential options include kafka,
+    active: 
   application:
     name: "wickedagile.reactiveOpenAPIMongo"
     processor:
@@ -19,7 +22,7 @@ spring:
     mongodb:
       host: "localhost"
       port: 27017
-      database: "reactiveOpenAPIMongo"
+      database: "quickstart"
 logging:
   file:
     name: "logs/application.log"
