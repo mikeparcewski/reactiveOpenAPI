@@ -2,7 +2,7 @@
 
 There are a couple ways to run with Kafka...
 
-* **Docker/Local Install** - Reccomend docker if you're doing this
+* **Docker** - https://developer.confluent.io/quickstart/kafka-docker/
 * **Confluent Kafka** - Which works across all cloud providers and has a free tier - https://www.confluent.io/get-started
 * **Self Managed Cloud** - Deploy as a self managed option
     * https://aws.amazon.com/about-aws/whats-new/2020/04/create-amazon-msk-clusters-with-t3-brokers/
@@ -36,14 +36,11 @@ So...
 
 ### Local
 
-If you haven't installed Kafka yet, I reccommend one of 3 options...
+I'm not going to waste your time with easy installs.  Go to the source (Confluent) and follow 
+their docker - https://developer.confluent.io/quickstart/kafka-docker/ - setup, it is by far the easiest 
+way to set up and I've even named the topics used after their default topic example **quickstart**.
 
-1. Install it - https://developer.confluent.io/quickstart/kafka-local/
-2. Docker it - https://developer.confluent.io/quickstart/kafka-docker/
-3. Brew it - ``brew install kafka``
-
-The existing configuration is for localhost, running on default port (9092) without a password. 
-If you need to change, left a link for those instructions in the application-kafka.yml file and below...
+The existing configuration is for localhost, running on default port (9092) without a password.  By default, if you use the docker instructions, this should just work.  If you need to change, left a link for those instructions in the application-kafka.yml file and below...
 
 https://github.com/spring-cloud/spring-cloud-stream-binder-kafka
 
@@ -52,7 +49,3 @@ https://github.com/spring-cloud/spring-cloud-stream-binder-kafka
 Running against cloud is a lot like running against local, same steps, just need 
 to configure appropriately.  You'll edit the same config [application-kafka.yml](../src/main/resources/application-kafka.yml) 
 just with some specific parameters.  A
-
-> Again the link in yaml file shows how to configure and depending on your implementation choice (e.g. cloud, confluent, docker)
-the documentation will explain how to update.  If using simple docker instance, you might not need to change
-anything here.

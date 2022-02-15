@@ -10,8 +10,7 @@ I want to get into the coding piece here, so I'm going explain why with links...
 * Why do it? https://siliconangle.com/2018/12/27/want-software-first-agility-get-event-driven-architecture-says-accenture-reinvent/
 
 And to make things even better (and unlike the MongoDB implementation we chose), 
-you can easily switch out your underlying messaging platform without a code change.  
-Normally this would be done by changing the binders registered in [pom.xml](pom.xml) and settings in 
+you can easily switch out your underlying messaging platform without a code change. Normally this would be done by changing the binders registered in [pom.xml](pom.xml) and settings in 
 [src/main/resources/application.yml](src/main/resources/application.yml), but we've simplified 
 this even more by showing a good use case for using Spring Profiles.
 
@@ -38,8 +37,7 @@ Possible implementations are...
 > a custom implementation [src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/exception/BinderExceptionHandler.java) 
 > since Spring has deprecated many of the convenience methods helpers like [EmitterProcessor](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/EmitterProcessor.html)
 
-**NOTE:** There are a bunch of binder implementations, from RabbitMQ to Azure Event Hubs.  
-Check out the [configuration page on messaging](docs/MESSAGING.md) for examples of connecting to these instead.
+**NOTE:** There are a bunch of binder implementations, from RabbitMQ to Azure Event Hubs. Check out the [configuration page on messaging](docs/MESSAGING.md) for examples of connecting to these instead.
 
 Also, just to prove messages are going (a little tougher to see in something like Kinesis), we have a simple consumer
 [src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java](src/main/java/com/wickedagile/apis/reference/reactoropenapi/event/BinderConsumer.java)

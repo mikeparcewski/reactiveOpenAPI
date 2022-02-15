@@ -13,7 +13,7 @@ springdoc:
 spring:
   profiles:
     ## Potential options include kafka,
-    active: 
+    active:
   application:
     name: "wickedagile.reactiveOpenAPIMongo"
     processor:
