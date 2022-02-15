@@ -2,38 +2,12 @@
 
 There are a couple ways to run with Mongo...
 
-* **In Memory** - This is the default, you don't need to do anything to get it working
 * **Atlas** - Which works across all cloud providers and has a free tier - https://docs.atlas.mongodb.com/getting-started/#deploy-a-free-tier-cluster
 * **Self Managed Cloud** - Deploy as a self managed option
   * https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction or https://docs.microsoft.com/en-us/hybrid/app-solutions/solution-deployment-guide-mongodb-ha
   * https://console.cloud.google.com/marketplace/product/click-to-deploy-images
   * https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html
 * [Docker](#Docker)
-
-### Configuration
-Out of the box, this app uses the in memory test database.  To disable that, just find the following section in your pom.xml file...
-
-```xml
-    <dependency>
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo</artifactId>
-    </dependency>
-```
-
-and change it to only be available for testing by adding `<scope>test</scope>`...
-
-```xml
-    <dependency>
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <scope>test</scope>
-    </dependency>
-```
-
-> If you ever want to move back to in memory, just remove that `<scope>test</scope>` line and make sure to update
-> you config back to localhost (if you changed it)
-
-If you're using Docker (and the setup guide for it below), you're done, just start up and have some fun!
 
 #### Cloud Variation
 If you're changing to use a cloud version of the DB, in addition to adding `<scope>test</scope>` from your POM file, 
@@ -49,7 +23,7 @@ spring:
     mongodb:
       host: "localhost"
       port: "27017"
-      database: "testdb"
+      database: "reactiveOpenAPIMongo"
 ```
 
 Next you'll probably end up changing `localhost` to something like...
@@ -93,10 +67,10 @@ mongo
 Yes, you read that right and at this point you're in the database.  Now mongo doesn't have a "create", but it's still easy...
 
 ```shell
-use testdb
+use reactiveOpenAPIMongo
 ```
 
-**testdb** is the name and "use" actually creates it.  If you don't believe me, just run...
+**reactiveOpenAPIMongo** is the name and "use" actually creates it.  If you don't believe me, just run...
 
 ```shell
 show dbs

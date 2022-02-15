@@ -64,7 +64,7 @@ To learn more about generation, check out...
 
 #### MongoDB
 
-The default database name is **reactiveOpenAPIMongo**, is port **27017** on localhost and isn't password protected.  You can change any of this in the [application.yml](src/main/resources/application.yml).
+The default database name is **reactiveOpenAPIMongo**, port **27017** on localhost and isn't password protected.  You can change any of this in the [application.yml](src/main/resources/application.yml).
 
 > Check out our [MongoDB docs](docs/MONGODB.md) for more information on configuration.
 
