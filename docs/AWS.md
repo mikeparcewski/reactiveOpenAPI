@@ -3,15 +3,16 @@
 Probably seeing a common theme here, outside of the setup, the changes needed for each of the implmentations 
 are pretty much the same...
 
-> IMPORTANT NOTE: You will need to disable **dependencyConvergence** in the maven enforcer plugin
-> because there is a lot of conflicting AWS jars.  It's easy, just go to the pom.xml
-> and find &lt;dependencyConvergence&gt; and remove that line (and just that line)
-
 ### Configuration
 
-So...
+Configuration is king!  Let's start by getting you ready...
 
-* First add the following to your pom.xml file...
+* First find below in the pom.xml...
+  ```xml
+  <dependencyConvergence/>
+  ```
+* Next, delete that line.  There's a ton of issues with with dependency convergernce in the Kafka libs.  If you were going to production, I'd say don't delete and solve (will take about 10 minutes).
+* Then add the following to your [pom.xml](../pom.xml) file...
   ```xml
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -19,22 +20,22 @@ So...
       <version>${kinesis-binder.version}</version>
     </dependency>
   ```
-* Go into [application.yml](../src/main/resources/application.yml)
+* Now in our [application.yml](../src/main/resources/application.yml) you'll need to set the profile to "aws" which will force the application to find the application-aws.yml file in the same location.
     * Find the section below...
       ```yaml
         spring:
           profiles:
-          ## Potential options include kafka,
+          ## Potential options include kafka, aws
           active:     
       ```
     * The section will be blank (active that is), just change to include aws...
         ```yaml
           spring:
             profiles:
-            ## Potential options include kafka,
+            ## Potential options include kafka, aws
             active: aws
         ```
-* Next up, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...
+* Finally, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...
     ```yaml
     aws:
       credentials:
@@ -49,10 +50,15 @@ So...
     ```
   Replace your credentials and region (if needed) and have some fun!
 
-> Alternative (better) is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=aws**)
+> Alternative (better) to adding the "aws" profile to application.yml is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=aws**)
 
-You'll notice in addition, I added the autoconfiguration exclude line, if you use AWS regularly and have a profile 
-on your machine, you won't need this, but if you don't (or have no clue what I'm talking about) this will save you an error 
-in the logs.
+NOTE: When updating the yaml file, please make sure to update "vendorChange" to whatever you named the Kinesis stream.
 
-> To know it's working, look for the log line **RECEIVED BINDER MESSSAGE**
+> To know this is working, look for the log line **RECEIVED BINDER MESSSAGE**
+
+The "autoconfigure" part of the config was added for folks who don't use AWS regularly or have a SDK profile on your machine.
+If you know what I'm talking about (or have a profile, but don't) you can remove this line and the credentials/region detail.
+
+If you don't have a profile from the SDK, removing this will break stuff.
+
+You can learn more at https://github.com/spring-cloud/spring-cloud-stream-binder-aws-kinesis/blob/main/spring-cloud-stream-binder-kinesis-docs/src/main/asciidoc/overview.adoc

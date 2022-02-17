@@ -11,12 +11,14 @@ There are a couple ways to run with Kafka...
 
 ### First Comes First
 
-In our [application.yml](../src/main/resources/application.yml) you'll need to set the profile to "kafka" 
-which will force the application to find the application-kafka.yml file in the same location.
+Configuration is king!  Let's start by getting you ready...
 
-So...
-
-* Begin by adding the following dependency to your pom.xml file
+* First find below in the pom.xml...
+  ```xml
+  <dependencyConvergence/>
+  ```
+* Next, delete that line.  There's a ton of issues with with dependency convergernce in the Kafka libs.  If you were going to production, I'd say don't delete and solve (will take about 10 minutes).
+* Then add the following to your [pom.xml](../pom.xml) file...
   ```xml
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -24,27 +26,28 @@ So...
       <version>${kafka-binder.version}</version>
     </dependency>
   ```
-* Go into [application.yml](../src/main/resources/application.yml)
+* Now in our [application.yml](../src/main/resources/application.yml) you'll need to set the profile to "kafka" which will force the application to find the application-kafka.yml file in the same location.
   * Find the section below...
     ```yaml
       spring:
         profiles:
-        ## Potential options include kafka,
+        ## Potential options include kafka, aws
         active:     
     ```
   * The section will be blank (active that is), just change to include kafka...
       ```yaml
         spring:
           profiles:
-          ## Potential options include kafka,
+          ## Potential options include kafka, aws
           active: kafka
       ```
+* Finally, go checkout [application-kafka.yml](../src/main/resources/application-kafka.yml) and update any configuration settings
 
-> Alternative (better) is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=kafka**)
+> Alternative (better) to adding the "kafka" profile to application.yml is to pass the profile when running command line (e.g. **mvn spring-boot:run -Dspring.profiles.active=kafka**)
 
-### Local
+### Setting Up Kafka Locally
 
-I'm not going to waste your time with easy installs.  Go to the source (Confluent) and follow 
+I'm not going to waste your time with my own install.  Go to the source (Confluent) and follow 
 their docker - https://developer.confluent.io/quickstart/kafka-docker/ - setup, it is by far the easiest 
 way to set up and I've even named the topics used after their default topic example **quickstart**.
 
@@ -52,8 +55,6 @@ The existing configuration is for localhost, running on default port (9092) with
 
 https://github.com/spring-cloud/spring-cloud-stream-binder-kafka
 
-#### Cloud Variation
+### Running Against Cloud
 
-Running against cloud is a lot like running against local, same steps, just need 
-to configure appropriately.  You'll edit the same config [application-kafka.yml](../src/main/resources/application-kafka.yml) 
-just with some specific parameters.  A
+Skip the install and you just need to play with the config, use the link for details.

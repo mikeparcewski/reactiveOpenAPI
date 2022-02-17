@@ -9,13 +9,16 @@ spring:
           destination: "vendorChange"
         producer-out-0:
           destination: "vendorChange"
-    aws:
-      credentials:
-        accessKey: <ACCESS_KEY>
-        secretKey: <SECRET_KEY>
-      region:
-        static: us-east-1
-      stack:
-        auto: false
-    autoconfigure:
-      exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+    function:
+      definition: producer;consumer
+cloud:
+  aws:
+    credentials:
+      accessKey: <AWS ACCESS KEY>
+      secretKey: <AWS SECRET KEY>
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+  autoconfigure:
+    exclude: org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration

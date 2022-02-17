@@ -12,7 +12,8 @@ springdoc:
     path: /docs
 spring:
   profiles:
-    ## Potential options include kafka,
+    ## Potential options include kafka, aws
+    ## Please read the docs on how to use
     active:
   application:
     name: "wickedagile.reactiveOpenAPIMongo"
