@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        auditor-in-0:
+          group: ${spring.application.name}
+        consumer-in-0:
+          group: ${spring.application.name}
+          destination: "vendorChange"
+        producer-out-0:
+          destination: "vendorChange"
+    function:
+      definition: producer;consumer
+    azure:
+      eventhub:
+        connection-string: [eventhub-namespace-connection-string]
+        checkpoint-storage-account: [name-of-storage-account]
+        checkpoint-access-key: [checkpoint-access-key]
+        checkpoint-container: [container-in-storage-account]
