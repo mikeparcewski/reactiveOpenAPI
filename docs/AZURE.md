@@ -15,20 +15,9 @@ Configuration is king!  Let's start by getting you ready...
 * Then add the following to your [pom.xml](../pom.xml) file...
   ```xml
     <dependency>
-        <groupId>com.azure.spring</groupId>
-        <artifactId>azure-spring-cloud-stream-binder-eventhubs</artifactId>
-        <version>2.1.0</version>
-    </dependency>
-    <dependency>
-    <groupId>javax.xml.bind</groupId>
-        <artifactId>jaxb-api</artifactId>
-        <version>2.3.1</version>
-    </dependency>
-    <dependency>
-        <groupId>org.glassfish.jaxb</groupId>
-        <artifactId>jaxb-runtime</artifactId>
-        <version>2.3.1</version>
-        <scope>runtime</scope>
+      <groupId>com.azure.spring</groupId>
+      <artifactId>azure-spring-cloud-stream-binder-eventhubs</artifactId>
+      <version>${eventhubs-binder.version}</version>
     </dependency>
   ```
 * Now in our [application.yml](../src/main/resources/application.yml) you'll need to set the profile to "azure" which will force the application to find the application-azure.yml file in the same location.

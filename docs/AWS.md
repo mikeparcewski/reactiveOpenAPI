@@ -25,14 +25,14 @@ Configuration is king!  Let's start by getting you ready...
       ```yaml
         spring:
           profiles:
-          ## Potential options include kafka, aws
+          ## Potential options include kafka, aws, azure
           active:     
       ```
     * The section will be blank (active that is), just change to include aws...
         ```yaml
           spring:
             profiles:
-            ## Potential options include kafka, aws
+            ## Potential options include kafka, aws, azure
             active: aws
         ```
 * Finally, need to add your AWS configuration [application-aws.yml](../src/main/resources/application-aws.yml)...

@@ -12,9 +12,9 @@ springdoc:
     path: /docs
 spring:
   profiles:
-    ## Potential options include kafka, aws
+    ## Potential options include kafka, aws, azure
     ## Please read the docs on how to use
-    active:
+    active: azure
   application:
     name: "wickedagile.reactiveOpenAPIMongo"
     processor:
@@ -26,14 +26,14 @@ spring:
       database: "quickstart"
 logging:
   file:
-    name: "logs/application.log"
+    name: "application.log"
+    path: "logs/"
   pattern:
     console: "%d %-5level %logger : %msg%n"
     file: "%d %-5level [%thread] %logger : %msg%n"
+    level: INFO
   logback:
     rollingpolicy:
       file-name-pattern: "logs/application.%d{yyyy-MM-dd-HH-mm}.log"
-#      max-file-size: 10M
+      max-file-size: 1
       max-history: 2
-  level:
-    root: INFO

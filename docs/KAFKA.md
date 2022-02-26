@@ -31,14 +31,14 @@ Configuration is king!  Let's start by getting you ready...
     ```yaml
       spring:
         profiles:
-        ## Potential options include kafka, aws
+        ## Potential options include kafka, aws, azure
         active:     
     ```
   * The section will be blank (active that is), just change to include kafka...
       ```yaml
         spring:
           profiles:
-          ## Potential options include kafka, aws
+          ## Potential options include kafka, aws, azure
           active: kafka
       ```
 * Finally, go checkout [application-kafka.yml](../src/main/resources/application-kafka.yml) and update any configuration settings
