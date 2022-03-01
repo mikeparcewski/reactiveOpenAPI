@@ -18,7 +18,7 @@ spring:
       definition: producer;consumer
     azure:
       eventhub:
-        connection-string: 
+        connection-string:
         checkpoint-storage-account: googlephotosgallery
         checkpoint-access-key:
         checkpoint-container: vendorchange
