@@ -177,12 +177,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <dependency>
-      <groupId>com.azure.spring</groupId>
-      <artifactId>azure-spring-cloud-stream-binder-eventhubs</artifactId>
-      <version>${eventhubs-binder.version}</version>
-    </dependency>
-
   </dependencies>
 
   <dependencyManagement>
@@ -286,7 +280,7 @@
             <id>enforce</id>
             <configuration>
               <rules>
-                <!-- dependencyConvergence / -->
+                <dependencyConvergence />
                 <requireJavaVersion>
                   <version>11</version>
                 </requireJavaVersion>
