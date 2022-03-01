@@ -1,6 +1,17 @@
+```diff
+- This is a work in progress, if you bave any issues please raise an issue or pull request
+```
+
 # Reactive Application Reference Implementation 
 
-[![](https://mermaid.ink/img/pako:eNp10MFuwjAMANBfiXwqEvxAD5NoUzGkTSC6W9NDSEyJRpMqcZAQ5d8XWnbbfLLsZ0v2HZTTCDl0Xg5n9nEQlqVYN7sB7Xq_bdlq9TaWzpKXikZWZgdMibkiS93FrIum4HySbKx7943sCwOFf3Q5rdyjDyYQWoUjq5rs09nO8WLRzqiakXc6KvQj22RNPXhjO8ZdL42trmipfW3cTLiOx6C8OT75-98cltCjTwWdLr4_hwXQGXsUkKdU40nGCwkQ9pFoHLQkrLQh5yE_yUvAJchIrr5ZBTn5iL-IG5ke2L_U4wfJBHAN)](https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNp10MFuwjAMANBfiXwqEvxAD5NoUzGkTSC6W9NDSEyJRpMqcZAQ5d8XWnbbfLLsZ0v2HZTTCDl0Xg5n9nEQlqVYN7sB7Xq_bdlq9TaWzpKXikZWZgdMibkiS93FrIum4HySbKx7943sCwOFf3Q5rdyjDyYQWoUjq5rs09nO8WLRzqiakXc6KvQj22RNPXhjO8ZdL42trmipfW3cTLiOx6C8OT75-98cltCjTwWdLr4_hwXQGXsUkKdU40nGCwkQ9pFoHLQkrLQh5yE_yUvAJchIrr5ZBTn5iL-IG5ke2L_U4wfJBHAN)
+```mermaid
+graph LR
+    A[OpenAPI] -->|Contract| C(Reactive API)
+    B[BDD] --> |Smoke Tests| C(Reactive API)
+    C -->|Persistence| E[(MongoDB)]
+    E -->|Producer| G([Spring DomainEvent])
+    G -->|Subscriber| H([Spring DomainEvent])
+```
 
 ## OpenAPI/BDD/Spring Reactor/MongoDB/Spring Domain Events (and a little magic)
 

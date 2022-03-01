@@ -1,6 +1,15 @@
 ## Event Driven Architecture (Messaging and More...)
 
-[![](https://mermaid.ink/img/pako:eNp90cFqwzAMBuBXMT4l0L5ADoMmTrvCxkqzW5KDa6upWSMHWy6Mpu8-t2lhbGw6CfTpP0hnrqwGnvHOyeHAXrYNsliL-m0AXGzWLZvPn8bCIjmpaGRFsoXYmBOwOE0nnde5EDfJxqq3H8DewZP_Qxe3yA04bzwBKhhZWSevFjsr8rSdUDkhZ3VQ4Ea2SupqcAY7JmwvDZYnQGrviasfeFnnBjW49vu4CjuvnNldwfN_actffJ08AlM-4z24uKPjzc7XhYbTAXpoeBZbDXsZjtTwBi-RhkFLglIbso5ne3n0MOMykK0-UfGMXIAHEkbGF_R3dfkClOiFHg)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp90cFqwzAMBuBXMT4l0L5ADoMmTrvCxkqzW5KDa6upWSMHWy6Mpu8-t2lhbGw6CfTpP0hnrqwGnvHOyeHAXrYNsliL-m0AXGzWLZvPn8bCIjmpaGRFsoXYmBOwOE0nnde5EDfJxqq3H8DewZP_Qxe3yA04bzwBKhhZWSevFjsr8rSdUDkhZ3VQ4Ea2SupqcAY7JmwvDZYnQGrviasfeFnnBjW49vu4CjuvnNldwfN_actffJ08AlM-4z24uKPjzc7XhYbTAXpoeBZbDXsZjtTwBi-RhkFLglIbso5ne3n0MOMykK0-UfGMXIAHEkbGF_R3dfkClOiFHg)
+```mermaid
+graph LR
+    A[OpenAPI] -->|Contract| C(Reactive API)
+    B[BDD] --> |Smoke Tests| C(Reactive API)
+    C -->|Persistence| E[(MongoDB)]
+    E -->|Producer| G([Spring DomainEvent])
+    G -->|Producer| F[Binder]
+    G -->|Subscriber| H([Spring DomainEvent])
+    F -->|Subscriber| I([Binder])
+```
 
 As an engineer, there are some concepts that just make sense to me.  Event Driven Architecture (EDA) is one of those things. 
 
@@ -28,8 +37,8 @@ Possible implementations are...
 * [KAFKA](KAFKA.md)
 * [AWS](AWS.md)
 * [AZURE](AZURE.md)
-* [GCP](GCP.md)
-* [RABBITMQ](RABBITMQ.md)
+* GCP (COMING SOON)
+* RABBITMQ (COMING SOON)
 
 > Reccomend you spend some time reading more on our choice of implementation
 > [spring cloud stream binders](https://spring.io/blog/2020/07/13/introducing-java-functions-for-spring-cloud-stream-applications-part-0)
