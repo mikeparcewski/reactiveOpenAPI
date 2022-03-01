@@ -3,7 +3,7 @@
 Running this app using Pub/Sub is pretty straight forward when running in the cloud, but getting it running 
 locally can be a bit tricky since they don't provide an in-memory implementation.  
 
-NOTE: Before you do anything [remove Kafka implementation](REMOVE_KAFKA.md)
+NOTE: Before you do anything [remove Kafka implementation](KAFKA.md)
 
 ### Configuration
 

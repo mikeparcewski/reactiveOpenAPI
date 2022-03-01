@@ -11,31 +11,29 @@ springdoc:
   swagger-ui:
     path: /docs
 spring:
+  profiles:
+    ## Potential options include kafka, aws, azure
+    ## Please read the docs on how to use
+    active: azure
   application:
-    name: "reactor.SpringOpenAPICRUD"
+    name: "wickedagile.reactiveOpenAPIMongo"
     processor:
       emitWaitNanos: 10
   data:
     mongodb:
       host: "localhost"
-      port: "27017"
-      database: "testdb"
-  cloud:
-    stream:
-      bindings:
-        auditor-in-0:
-          group: ${spring.application.name}
-        consumer-in-0:
-          group: ${spring.application.name}
-          destination: "vendorChange"
-        producer-out-0:
-          destination: "vendorChange"
-      ## lots to configure to make production
-      ## ready - https://github.com/spring-cloud/spring-cloud-stream-binder-kafka
-      kafka:
-        binder:
-          brokers: localhost
-          defaultBrokerPort: 9092
-    function:
-      definition: producer;consumer
-
+      port: 27017
+      database: "quickstart"
+logging:
+  file:
+    name: "application.log"
+    path: "logs/"
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+    level: INFO
+  logback:
+    rollingpolicy:
+      file-name-pattern: "logs/application.%d{yyyy-MM-dd-HH-mm}.log"
+      max-file-size: 1
+      max-history: 2

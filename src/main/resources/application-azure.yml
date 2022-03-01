@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        auditor-in-0:
+          group: ${spring.application.name}
+        consumer-in-0:
+          group: ${spring.application.name}
+          destination: "vendorchange"
+        producer-out-0:
+          destination: "vendorchange"
+      eventhub:
+        bindings:
+          consumer-in-0:
+            consumer:
+              checkpoint-mode: MANUAL
+    function:
+      definition: producer;consumer
+    azure:
+      eventhub:
+        connection-string:
+        checkpoint-storage-account: googlephotosgallery
+        checkpoint-access-key:
+        checkpoint-container: vendorchange
+    poller:
+      initial-delay: 0
+      fixed-delay: 1000

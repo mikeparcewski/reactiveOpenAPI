@@ -2,7 +2,7 @@
 
 Like Kafka, the RabbitMQ binder implementation can be run locally or in the cloud pretty easily. 
 
-As always, [remove Kafka implementation](REMOVE_KAFKA.md) before you do anything.
+As always, [remove Kafka implementation](KAFKA.md) before you do anything.
 
 ### Running RabbitMQ
 
